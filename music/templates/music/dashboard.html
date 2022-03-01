@@ -1,0 +1,60 @@
+{% extends "music/index.html" %}
+
+    {%block title%} - Dashboard {%endblock%}
+
+    {%block body%}
+
+    <div class="container">
+      <h1 class="mt-5 border-bottom text-warning">My Stats<h1>
+      <div class="row my-5">
+        <div class="col-md-4 ocard">
+          <div class="col-md-4 icard">
+          <h3>Total category</h3>
+          <h1 class="mt-4">{{form.cat}}
+          <a class="btn btn-success" href="{%url 'music:viewcategory'%}" style="float:right;">View All category</a></h1>
+        </div>
+        </div>
+        <div class="col-md-4 ocard">
+          <div class="col-md-4 icard">
+          <h3>Total Albums</h3>
+          <h1 class="mt-4">{{form.album}}
+          <a class="btn btn-success" style="float:right;" href="{%url 'music:myalbum'%}">View All Albums</a>
+        </h1>
+        </div>
+        </div>
+        <div class="col-md-4 ocard">
+          <div class="col-md-4 icard">
+          <h3>Total Songs</h3>
+          
+          <h1 class="mt-4">{{form.song}}
+          <a class="btn btn-success" style="float:right;" href="{%url 'music:viewsong'%}">View All Songs</a></h1>
+        </div>
+        </div>
+        
+      </div>
+  
+      <div class="row mt-5">
+        <div class="col-md-6 ocard">
+          <div class="col-md-6 icard">
+          <h3>Recently Added Songs</h3>
+          <h1>35</h1>
+        </div>
+        </div>
+        <div class="col-md-6 ocard">
+          <div class="col-md-6 icard">
+          <h3>Last Login</h3>
+          <h1>35</h1>
+        </div>
+        </div>
+        
+  
+      </div>
+    </div>
+
+    
+
+  </div>
+
+
+
+  {%endblock%}

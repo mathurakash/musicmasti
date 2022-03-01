@@ -1,0 +1,20 @@
+{% extends "music/index.html" %}
+
+    {%block title%} User Login {%endblock%}
+
+    {%block body%}
+
+    <div class="main_div">
+    <h1>Login Form</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- csrf token -->
+        {% csrf_token %}
+        <table class="table table-bordered">
+            {{form.as_table}}
+        </table>
+        <button class="btn btn-warning" type="submit" value='Submit' >Signin</button>
+    </form>
+
+</div>
+
+    {%endblock%}

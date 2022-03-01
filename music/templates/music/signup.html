@@ -1,0 +1,28 @@
+{% extends "music/index.html" %}
+
+    {%block title%} User Signup {%endblock%}
+
+    {%block body%}
+    
+    <div class="main_div">
+    <h1>SignUp From</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- csrf token -->
+        {% csrf_token %}
+
+        <!-- for getting form as paragraf
+        {{form.as_p}} -->
+
+        <table class="table table-bordered">
+            {% if error %}
+                {{error}}
+            {% endif %}
+            {{form.as_table}}
+        </table>
+
+        <!-- form submit button -->
+        <button class="btn btn-warning" type="submit" value='Submit' >Signup</button>
+    </form>
+</div>
+
+    {%endblock%}

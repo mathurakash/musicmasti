@@ -1,0 +1,51 @@
+{% extends 'music/index.html' %}
+{% block title %} - My Albums{% endblock %}
+{% block body %}
+
+<div class="container">
+  {% if "user_log" in request.session %}
+	<div class="row mt-3 ">
+        {%if form%}
+        <div class="border-bottom ">
+          <span class="mt-3  text-warning " style="font-size:40px;font-weight:bold;">My Albums</span><span>
+          <a href="{%url 'music:addalbum'%}" class="btn btn-success mt-2" style="float:right;">Add Album</a></span>
+          <span>
+            <a href="{%url 'music:addsong'%}" class="btn btn-success mt-2 mx-2" style="float:right;">Add Songs</a></span>
+      </div>
+		{% for j in form.alb%}
+        <div class="col-md-4 text-center">
+            <div class="cards">
+              <div class="card">
+                <img src="{{j.album_logo.url}}" alt="mypic"
+                  class="card__img" />
+                <div class="card__info">
+                  <span class="card__categpry">Artist : {{j.artist_name}}</span>
+                  <h3 class="card__title"> Album : {{j.album_name}} </h3>
+                  <p>Genere: {{j.album_genre}}</p>
+    
+                  <div>
+                    {% comment %} <a href="" class="btn btn-outline-warning button">❤️ {likes}</a>
+                    <a href="" class="btn btn-outline-warning button"> 👎 {dislikes}</a> {% endcomment %}
+                    <a href="{%url 'music:ViewAlbumSongs' j.id%}" class="btn btn-success button">  View Songs</a>
+                    <a href="{%url 'music:updatealbum' j.id%}" class="btn btn-info button"> Update</a>
+                    <a href="{%url 'music:deletealbum' j.id%}" class="btn btn-danger button"> Delete</a>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+          {%endfor%}
+          {%else%}
+          <div class="row mt-3 text-center">
+          <h1 class="text-danger">Please Add Your Albums First......</h1>
+          </div>
+          {%endif%}
+    </div>
+
+    {%else%}
+    <h1 class="text-center text-danger my-5">Please Login First..........</h1>
+{%endif%}
+    
+</div>
+{%endblock%}

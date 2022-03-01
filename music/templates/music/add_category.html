@@ -1,0 +1,24 @@
+{% extends "music/index.html" %}
+
+    {%block title%} Add Song Genere {%endblock%}
+
+    {%block body%}
+    {% if "user_log" in request.session %}
+    <div class="main_div">
+    <h1>Add category</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- csrf token -->
+        {% csrf_token %}
+        <table class="table table-bordered">
+            {{form.as_table}}
+        </table>
+        <button class="btn btn-warning" type="submit" value='Submit' >Submit</button>
+    </form>
+    {%else%}
+        <h1 class="text-center text-danger my-5">Please Login First.......</h1>
+    {%endif%}
+
+
+</div>
+
+    {%endblock%}

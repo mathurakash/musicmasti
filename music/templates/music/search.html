@@ -1,0 +1,83 @@
+{% extends "music/index.html" %}
+
+{%block title%} You Search for {{search}}{%endblock%}
+
+{%block body%}
+{%if name%}
+<div class="border-bottom ">
+    <span class="mt-3  text-warning " style="font-size:40px;font-weight:bold;">You Search For <span
+            style="color:white">{{name}}</span></span><span>
+
+</div>
+<div class="container">
+    <h1 class="text-warning border-bottom">Albums</h1>
+
+        {%for j in album%}
+   
+
+            <div class="col-md-4 text-center">
+                <div class="cards">
+                    <div class="card">
+                        <img src="{{j.album_logo.url}}" alt="mypic" class="card__img" />
+                        <div class="card__info">
+                            <span class="card__categpry">Artist : {{j.artist_name}}</span>
+                            <h3 class="card__title"> Album : {{j.album_name}} </h3>
+                            <p>Genere: {{j.album_genre}}</p>
+
+                            <div>
+                                {% comment %} <a href="" class="btn btn-outline-warning button">❤️ {likes}</a>
+                                <a href="" class="btn btn-outline-warning button"> 👎 {dislikes}</a> {% endcomment %}
+                                <a href="{%url 'music:ViewAlbumSongs' j.id%}" class="btn btn-success button"> View
+                                    Songs</a>
+                    
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {%endfor%}
+</div>
+<div class="container">
+    <h1 class="text-warning border-bottom">Songs</h1>
+
+    {%for k in song%}
+    <div class="col-md-4 text-center">
+        <div class="cards">
+            <div class="card">
+                <img src="{{k.song_image.url}}" alt="mypic" class="card__img" />
+                <div class="card__info">
+                    <span class="card__categpry">Album : {{k.album_id}}</span>
+                    <h3 class="card__title"> Song : {{k.song_name}} </h3>
+                    {% comment %} <p>Genere: {{k.album_genre}}</p> {% endcomment %}
+                    <audio controls>
+                        <source src="{{k.song.url}}" type="audio/ogg">
+                        <source src="{{k.song.url}}" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                    </audio>
+                    <div>
+                        <a href="{%url 'music:likesong' k.id%}" class="btn btn-warning button">❤️ {{k.likes}}</a>
+                        <a href="{%url 'music:dislikesong' k.id%}" class="btn btn-warning button"> 👎
+                            {{k.dislikes}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {%endfor%}          
+</div>
+
+
+{%else%}
+<div class="main_div">
+    <h1>Your Search Result {{name}}</h1>
+
+    <h3> Hey You Forget to Seach anything...... </h3>
+</div>
+{%endif%}
+
+
+
+{%endblock%}
